@@ -88,6 +88,28 @@ function getValues() {
   * Modular
   * Readable
   * Pure whenever possible
+ 
+* Arguments in one line, unless too long.
+
+```ts
+const getValues = (a: A, b: B) => {
+};
+getValues(a, b);
+```
+
+Avoid stacking: 
+
+```ts
+const getValues = (
+ a: A,
+ b: B,
+) => {
+};
+getValues(
+ a,
+ b,
+);
+```
 
 ## Code Style
 
