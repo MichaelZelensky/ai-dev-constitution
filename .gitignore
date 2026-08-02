@@ -1,1 +1,4 @@
 files-content.txt
+util/llm.patch
+util/concat-out/*.txt
+!util/concat-out/.gitkeep
