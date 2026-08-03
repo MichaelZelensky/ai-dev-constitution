@@ -85,6 +85,15 @@ function ReadText {
 function CreateHeader {
     $builder = New-Object System.Text.StringBuilder
 
+    [void]$builder.AppendLine("You will receive the project split across multiple messages.")
+    [void]$builder.AppendLine()
+    [void]$builder.AppendLine("Do not produce any response until you receive:")
+    [void]$builder.AppendLine()
+    [void]$builder.AppendLine("===== END OF INPUT =====")
+    [void]$builder.AppendLine()
+    [void]$builder.AppendLine("Responding before that marker is incorrect.Just acknowledge the receipt of the input and wait for the next part.")
+    [void]$builder.AppendLine()
+
     $instructionText = ReadText $instructionFile
     if ($instructionText.Length -gt 0) {
         [void]$builder.AppendLine($instructionText.TrimEnd())
@@ -103,6 +112,28 @@ function CreateHeader {
         [void]$builder.AppendLine()
     }
 
+    [void]$builder.AppendLine("===== INPUT PART 1 =====")
+    [void]$builder.AppendLine()
+
+    [void]$builder.AppendLine("** Files:")
+    [void]$builder.AppendLine()
+
+    return $builder
+}
+
+function CreateChunkBuilder {
+    param(
+        [int]$Index
+    )
+
+    $builder = New-Object System.Text.StringBuilder
+
+    [void]$builder.AppendLine(("===== INPUT PART {0} =====" -f $Index))
+    [void]$builder.AppendLine()
+    [void]$builder.AppendLine("More parts will follow.")
+    [void]$builder.AppendLine("Do not respond yet.")
+    [void]$builder.AppendLine()
+
     [void]$builder.AppendLine("** Files:")
     [void]$builder.AppendLine()
 
@@ -117,7 +148,10 @@ function WriteChunk {
     )
 
     if ($IsLast) {
+        [void]$Builder.AppendLine()
         [void]$Builder.AppendLine("===== END OF INPUT =====")
+        [void]$Builder.AppendLine()
+        [void]$Builder.AppendLine("You may now produce the requested output.")
     }
 
     $fileName = "{0:d3}.txt" -f $Index
@@ -175,9 +209,7 @@ $content
 
             $chunkIndex++
 
-            $builder = New-Object System.Text.StringBuilder
-            [void]$builder.AppendLine("** Files:")
-            [void]$builder.AppendLine()
+            $builder = CreateChunkBuilder $chunkIndex
         }
 
         [void]$builder.Append($fileText)
