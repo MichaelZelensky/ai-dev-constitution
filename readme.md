@@ -86,6 +86,43 @@ Supported operations:
 * `remove`
 * `rename`
 
+## Command Line
+
+### Concatenate project files
+
+```text
+powershell.exe -NoProfile -ExecutionPolicy Bypass `
+    -File ./util/concat.ps1 `
+    [-Constitution constitution-compressed.md] `
+    [-CodingInstructions coding-instructions.md] `
+    [-OutputFormat patch|full-code] `
+    [-MaxChars 120000]
+```
+
+Arguments:
+
+| Argument              | Description                                                           |
+| --------------------- | --------------------------------------------------------------------- |
+| `-Constitution`       | Optional constitution file appended to the prompt.                    |
+| `-CodingInstructions` | Optional coding instructions appended to the prompt.                  |
+| `-OutputFormat`       | `patch` (default) or `full-code`.                                     |
+| `-MaxChars`           | Maximum characters per generated prompt chunk. `0` disables chunking. |
+
+### Apply LLM edits
+
+```text
+powershell.exe -NoProfile -ExecutionPolicy Bypass `
+    -File ./util/apply-patch.ps1 `
+    [-Patch util/llm.patch]
+```
+
+Arguments:
+
+| Argument | Description                                              |
+| -------- | -------------------------------------------------------- |
+| `-Patch` | Edit-operation file to apply. Default: `util/llm.patch`. |
+
+
 ## Design Goals
 
 * Minimal and readable.
