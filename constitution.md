@@ -129,6 +129,7 @@ getValues(
 * Do not vertically align code.
 * Keep related lines together.
 * Do not add visual separators.
+* Indent with 2 spaces
 
 ## Imports
 
