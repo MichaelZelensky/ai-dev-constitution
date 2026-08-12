@@ -14,6 +14,12 @@
       "problemMatcher": []
     },
     {
+      "label": "Concat files (chunkes + constitution)",
+      "type": "shell",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./util/concat.ps1 -Constitution constitution-compressed.md -MaxChars 10000",
+      "problemMatcher": []
+    },
+    {
       "label": "Apply LLM patch",
       "type": "shell",
       "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./util/apply-patch.ps1",
