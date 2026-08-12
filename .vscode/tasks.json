@@ -14,7 +14,7 @@
       "problemMatcher": []
     },
     {
-      "label": "Concat files (chunkes + constitution)",
+      "label": "Concat files (chunks + constitution)",
       "type": "shell",
       "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./util/concat.ps1 -Constitution constitution-compressed.md -MaxChars 10000",
       "problemMatcher": []
