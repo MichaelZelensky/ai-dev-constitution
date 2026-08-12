@@ -1,5 +1,7 @@
 ﻿# Dev Constitution
 
+Version: 1.0.0
+
 > A vendor-neutral constitution for AI-assisted software development.
 
 ## Core Principles
@@ -130,6 +132,34 @@ getValues(
 * Keep related lines together.
 * Do not add visual separators.
 * Indent with 2 spaces
+
+## Spacing
+
+- No blank lines within a 0-level block (import block, top-level constants, etc.).
+- Add a blank line only before a nested block (e.g. a function definition), not inside it.
+- No blank lines inside function bodies.
+- Example:
+
+```ts
+import x from 'x';
+import y from 'y';
+//... no spacer lines in the header / import block
+import z from 'z';
+
+const A = 'A';
+//... no spacer lines in initial constants or any 0-level block
+const Z = 'Z';
+
+const a = () => {
+  // no spacers inside functions, spacer only before the function
+  const var1 = 'var1';
+  if (true) {
+    // operations
+  }
+}
+
+a(); // notice spacer before the 0-level block
+```
 
 ## Imports
 
