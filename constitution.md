@@ -1,4 +1,4 @@
-# Dev Constitution
+﻿# Dev Constitution
 
 > A vendor-neutral constitution for AI-assisted software development.
 
@@ -177,14 +177,16 @@ throw new Error("Invalid token");
 When editing existing code:
 
 1. Make the smallest possible change.
-2. Preserve existing behavior.
-3. Preserve existing comments.
-4. Preserve existing formatting.
-5. Preserve existing error messages.
-6. Do not fix unrelated issues.
-7. Do not refactor unrelated code.
-8. Do not rewrite files for style alone.
-9. Do not fix mojibake unless requested.
+2. Prefer insertion/deletion operations over replacement when possible.
+3. Do not replace unchanged lines.
+4. Preserve existing behavior.
+5. Preserve existing comments.
+6. Preserve existing formatting.
+7. Preserve existing error messages.
+8. Do not fix unrelated issues.
+9. Do not refactor unrelated code.
+10. Do not rewrite files for style alone.
+11. Do not fix mojibake unless requested.
 
 ## AI Assistant Rules
 

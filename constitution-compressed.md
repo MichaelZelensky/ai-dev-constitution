@@ -54,10 +54,12 @@
 ## Editing Rules
 
 1. Minimal changes only.
-2. No unrelated refactoring.
-3. No style-only rewrites.
-4. Do not fix unrelated issues.
-5. Respect surrounding code style.
+2. Prefer insertion/deletion operations over replacement when possible.
+3. Do not replace unchanged lines.
+4. No unrelated refactoring.
+5. No style-only rewrites.
+6. Do not fix unrelated issues.
+7. Respect surrounding code style.
 
 ## Priority
 
